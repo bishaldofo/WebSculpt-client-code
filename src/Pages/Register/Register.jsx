@@ -31,8 +31,21 @@ const Register = () => {
 
       const imageUrl = res.data.data.display_url;
       console.log(imageUrl)
+      
+      if (res.data.success) {
+         const userData = {
+            name: data.name,
+            email: data.email,
+            designation: data.designation,
+            bank: data.bank,
+            salary: data.salary,
+            imageUrl: imageUrl,
+         };
 
-      console.log(res.data)
+         const userRes = await axios.post('http://localhost:5000/users', userData);
+         console.log(userRes)
+      }
+   
       createUser(data.email, data.password)
          .then(result => {
             const loggedUser = result.user;
@@ -48,13 +61,15 @@ const Register = () => {
                      showConfirmButton: false,
                      timer: 1500
                   });
-                  
                   navigate('/')
+
+                  
                })
                .catch(error => {
                   console.log(error)
                })
          })
+      
    }
    
    return (
