@@ -1,7 +1,21 @@
+import { useContext } from "react";
 import { AwesomeButton } from "react-awesome-button";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+   const { user, logOut, loading } = useContext(AuthContext)
+
+   if (loading) {
+      return <div className="h-screen flex justify-center items-center">
+         <progress className="progress w-56"></progress>
+      </div>
+   }
+   
+   const handleLogOut = (e) => {
+      e.preventDefault();
+      logOut()
+   }
 
    const navLink = <>
       <li>
@@ -37,9 +51,31 @@ const Navbar = () => {
                </ul>
             </div>
             <div className="navbar-end">
-               <Link to="/login">
-                  <AwesomeButton className='bg-sky-500' type="primary"><span className='text-white text-lg'>Login</span></AwesomeButton>
-               </Link>
+               
+               {
+                  user ?
+                     <>
+                        <div className="dropdown dropdown-end">
+                           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                           <div className="w-10 rounded-full">
+                              <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                           </div>
+                           </div>
+                           <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                              <li>
+                                 <button className="btn pt-3">Profile</button>
+                              </li>
+                              <li><button className="btn pt-3 mt-2" onClick={handleLogOut}>Logout</button></li>
+                           </ul>
+                        </div>
+                     </>
+                     :
+                     <>
+                        <Link to="/login">
+                           <AwesomeButton className='bg-sky-500' type="primary"><span className='text-white text-lg'>Login</span></AwesomeButton>
+                        </Link>
+                     </>
+               }
             </div>
          </div>
       </div>

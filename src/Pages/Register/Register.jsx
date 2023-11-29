@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { FaChevronLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -23,6 +24,13 @@ const Register = () => {
          .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser)
+            Swal.fire({
+               position: "top-end",
+               icon: "success",
+               title: "Account created successfully!",
+               showConfirmButton: false,
+               timer: 1500
+             });
          })
    }
    
