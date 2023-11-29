@@ -55,10 +55,15 @@ const Navbar = () => {
                {
                   user ?
                      <>
+                        <h4 className="text-white mr-2 text-lg">
+                           {
+                              user?.displayName
+                           }
+                        </h4>
                         <div className="dropdown dropdown-end">
                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                            <div className="w-10 rounded-full">
-                              <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                              <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
                            </div>
                            </div>
                            <ul className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">

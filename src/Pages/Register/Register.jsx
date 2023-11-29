@@ -3,34 +3,57 @@ import { AwesomeButton } from "react-awesome-button";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Register = () => {
-   const {createUser} = useContext(AuthContext)
+   const { createUser, updateUserProfile } = useContext(AuthContext)
+   const navigate = useNavigate()
    const {
       register,
       handleSubmit,
-      watch,
+      reset,
       formState: { errors },
    } = useForm()
 
-   const onSubmit = (data) => {
+   const onSubmit = async (data) => {
       console.log(data)
+      const imageFile = { image: data.image[0] }
+      const res = await axios.post(image_hosting_api, imageFile, {
+         headers: {
+            'content-type': 'multipart/form-data'
+         }
+      })
+
+      const imageUrl = res.data.data.display_url;
+      console.log(imageUrl)
+
+      console.log(res.data)
       createUser(data.email, data.password)
          .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser)
-            Swal.fire({
-               position: "top-end",
-               icon: "success",
-               title: "Account created successfully!",
-               showConfirmButton: false,
-               timer: 1500
-             });
+            updateUserProfile(data.name, data.display_url, imageUrl)
+               .then(() => {
+                  console.log('User Profile info updated')
+                  reset();
+                  Swal.fire({
+                     position: "top-end",
+                     icon: "success",
+                     title: "Account created successfully!",
+                     showConfirmButton: false,
+                     timer: 1500
+                  });
+                  
+                  navigate('/')
+               })
+               .catch(error => {
+                  console.log(error)
+               })
          })
    }
    
