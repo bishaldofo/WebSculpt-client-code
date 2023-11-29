@@ -2,26 +2,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { FaQuoteLeft } from "react-icons/fa";
+import useReviews from '../../Hooks/useReviews';
 
 const Testimonial = () => {
-   const [reviews, setReviews] = useState([])
-
-   useEffect( () => {
-      const fetchData = async () => {
-         try {
-            const res = await axios.get('reviews.json');
-            setReviews(res.data)
-         } catch (error) {
-            console.error("Error fetching menu:", error)
-         }
-      }
-      fetchData();
-   }, [])
+   const [reviews] = useReviews();
+   
    return (
       <div className='bg-base-200 py-20'>
          <div className='flex max-w-7xl m-auto items-center justify-center gap-5 flex-col md:flex-row'>

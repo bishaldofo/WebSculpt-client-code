@@ -1,60 +1,50 @@
 [
    {
-     "id": 1,
      "name": "John Doe",
      "details": "Exceptional work on our e-commerce website! The team ensured a smooth shopping experience and integrated secure payment methods.",
      "rating": 5
    },
    {
-     "id": 2,
      "name": "Jane Smith",
      "details": "They transformed our outdated website into a modern masterpiece. The frontend design is captivating, and the backend is efficient.",
      "rating": 4.5
    },
    {
-     "id": 3,
      "name": "David Johnson",
      "details": "Responsive web design at its best! Our site looks fantastic on all devices. Kudos to the team for their attention to detail.",
      "rating": 5
    },
    {
-     "id": 4,
      "name": "Emily Wilson",
      "details": "The SEO optimization significantly increased our online visibility. Our website now ranks higher on search engine results.",
      "rating": 4
    },
    {
-     "id": 5,
      "name": "Robert Brown",
      "details": "Reliable backend development! The team created a robust server-side that handles our website's increasing traffic seamlessly.",
      "rating": 4.5
    },
    {
-     "id": 6,
      "name": "Amanda Miller",
      "details": "Efficient web maintenance services. They respond promptly to issues and keep our site updated with the latest features.",
      "rating": 4
    },
    {
-     "id": 7,
      "name": "Michael White",
      "details": "Outstanding frontend development! The interactive interfaces they built significantly improved user engagement.",
      "rating": 5
    },
    {
-     "id": 8,
      "name": "Olivia Davis",
      "details": "Smooth collaboration on our project. The team demonstrated expertise in both frontend and backend development.",
      "rating": 4.5
    },
    {
-     "id": 9,
      "name": "Daniel Taylor",
      "details": "E-commerce solutions that exceeded our expectations. Our online store is now a major success, thanks to their work.",
      "rating": 5
    },
    {
-     "id": 10,
      "name": "Sophia Harris",
      "details": "Great support and communication throughout the project. They provided valuable insights and delivered on time.",
      "rating": 4
