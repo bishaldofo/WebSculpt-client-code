@@ -8,7 +8,7 @@ const useReviews = () => {
    useEffect( () => {
       const fetchData = async () => {
          try {
-            const res = await axios.get('http://localhost:5000/reviews');
+            const res = await axios.get('https://web-sculpt-server.vercel.app/reviews');
             setReviews(res.data)
             setLoading(false)
          } catch (error) {
