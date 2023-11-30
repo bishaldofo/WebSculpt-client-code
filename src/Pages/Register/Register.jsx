@@ -6,11 +6,12 @@ import { FaChevronLeft } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import axios from "axios";
 
-const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Register = () => {
+   const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+   const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
    const { createUser, updateUserProfile } = useContext(AuthContext)
    const navigate = useNavigate()
    const {
@@ -19,6 +20,8 @@ const Register = () => {
       reset,
       formState: { errors },
    } = useForm()
+
+   const axiosSecure = useAxiosSecure()
 
    const onSubmit = async (data) => {
       console.log(data)
@@ -29,8 +32,8 @@ const Register = () => {
          }
       })
 
-      const imageUrl = res.data.data.display_url;
-      console.log(imageUrl)
+   const imageUrl = res.data.data.display_url;
+   console.log(imageUrl)
       
       if (res.data.success) {
          const userData = {
@@ -42,7 +45,7 @@ const Register = () => {
             imageUrl: imageUrl,
          };
 
-         const userRes = await axios.post('http://localhost:5000/users', userData);
+         const userRes = await axiosSecure.post('/users', userData);
          console.log(userRes)
       }
    
