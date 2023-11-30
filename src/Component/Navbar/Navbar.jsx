@@ -19,7 +19,7 @@ const Navbar = () => {
 
    const navLink = <>
       <li>
-         <NavLink className="lg:text-white uppercase text-base" to='/dashBoard'>
+         <NavLink className="lg:text-white uppercase text-base" to='/dashBoard/users'>
             DashBoard
          </NavLink>
       </li>
