@@ -1,10 +1,11 @@
 import { AwesomeButton } from "react-awesome-button";
 import { Helmet } from "react-helmet";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaChevronLeft } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Component/SocialLogin/SocialLogin";
+import { FaChevronLeft } from "react-icons/fa";
 
 const Login = () => {
    const { login } = useContext(AuthContext);
@@ -40,15 +41,13 @@ const Login = () => {
          </Helmet>
          <div className="h-screen flex flex-col items-center justify-center">
             <div className="w-full md:w-[500px] m-auto space-y-5">
-               <div className="mb-10"><Link className="flex items-center text-gray-900 font-semibold" to='/'><FaChevronLeft></FaChevronLeft>Homepage</Link></div>
+               <div className="mb-10"><Link className="flex items-center text-gray-900 font-semibold" to='/'><FaChevronLeft></FaChevronLeft>Homepage</Link>
+               </div>
                <div>
                   <h2 className="text-3xl font-bold mb-3 text-sky-500">Sign In</h2>
                   <p>Enter your email address to get started</p>
                </div>
-
-               <div>
-                  <button className="btn w-full bg-white shadow-md" type="submit"><img className="w-4" src="https://i.ibb.co/YWF3FVg/google.png" alt="" />Sign in with Google</button>
-               </div>
+               <SocialLogin></SocialLogin>
                <form onSubmit={handleLogin}  className=" w-full m-auto space-y-2">
                   <div className="form-control">
                      <label className="label">

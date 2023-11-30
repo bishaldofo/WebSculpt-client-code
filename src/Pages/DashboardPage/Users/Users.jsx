@@ -1,7 +1,7 @@
 const Users = () => {
    return (
       <div>
-         <h2>Users</h2>         
+         <h2>All Employees</h2>        
       </div>
    );
 };
